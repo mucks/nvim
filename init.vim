@@ -19,6 +19,8 @@ highlight LineNr ctermbg=236
 
 let g:deoplete#enable_at_startup = 1
 
+autocmd BufWritePost *.rs call LanguageClient_textDocument_formatting()
+
 " Disable Arrow keys in Escape mode
 map <up> <nop>
 map <down> <nop>
