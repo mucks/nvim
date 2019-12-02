@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -11,13 +12,13 @@ set signcolumn=yes
 set numberwidth=1
 highlight LineNr ctermbg=236
 
+au BufWrite * :Autoformat
+
 " coc
 set hidden
 " Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Better display for messages
 set cmdheight=2
