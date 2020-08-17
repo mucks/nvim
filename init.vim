@@ -4,6 +4,7 @@ Plug 'junegunn/fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'stephpy/vim-yaml'
 
 call plug#end()
 
@@ -13,7 +14,9 @@ set signcolumn=yes
 set numberwidth=1
 highlight LineNr ctermbg=236
 
-au BufWrite * :Autoformat
+au BufWrite *.rs :Autoformat
+
+set number
 
 " coc
 set hidden
