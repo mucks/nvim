@@ -2,11 +2,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-rust-analyzer']
+
+Plug 'ianks/vim-tsx'
 Plug 'Chiel92/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'stephpy/vim-yaml'
+Plug 'leafgarland/typescript-vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
+
 
 colorscheme zenburn
 highlight clear SignColumn
@@ -15,6 +22,19 @@ set numberwidth=1
 highlight LineNr ctermbg=236
 
 au BufWrite *.rs :Autoformat
+au BufWrite *.tsx,*.ts,*.jsx,*.js :Format
+
+" == AUTOCMD ================================ 
+" by default .ts file are not identified as typescript and .tsx files are not
+" identified as typescript react file, so add following
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+" == AUTOCMD END ================================
+
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 expandtab
+autocmd Filetype typescript setlocal ts=2 sw=2 expandtab
+autocmd Filetype typescript.tsx setlocal ts=2 sw=2 expandtab
 
 set number
 
