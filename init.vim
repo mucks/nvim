@@ -15,6 +15,9 @@ Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 
 
+let $FZF_DEFAULT_COMMAND='fd --type f'
+
+
 colorscheme zenburn
 highlight clear SignColumn
 set signcolumn=yes
